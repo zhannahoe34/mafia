@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mafia</title>
+    <script>
+    function toggleReadOnly(checkboxId, numberId) {
+        var checkbox = document.getElementById(checkboxId);
+        var number = document.getElementById(numberId);
+
+        if (checkbox.checked) {
+        number.removeAttribute("readonly");
+        } else {
+        number.setAttribute("readonly", "readonly");
+        }
+    }
+    </script>
+</head>
+<body>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        Enter All Players, each player goes on their own line:
+        <br><br>
+        <textarea id="players" name="players" cols="30" rows="10"></textarea>
+        <br><br>
+
+        <label for="werewolf_number">How Many Werewolves?</label>
+        <input type="number" name="werewolf" id="werewolf_number">
+        <br><br>
+        <label>
+        Sheriff<input type="checkbox" id="sheriff_checkbox" onclick="toggleReadOnly('sheriff_checkbox', 'sheriff_quant')">
+        </label>
+        <label for="sheriff_number">Quantity:</label>
+        <input type="number" name="sheriff" id="sheriff_quant" readonly>
+        <br><br>
+
+        <label>
+        Nurse<input type="checkbox" id="nurse_checkbox" onclick="toggleReadOnly('nurse_checkbox', 'nurse_quant')">
+        </label>
+        <label for="nurse_number">Quantity:</label>
+        <input type="number" name="nurse" id="nurse_quant" readonly>
+        <br><br>
+
+        <label>
+        Jester<input type="checkbox" id="jester_checkbox" onclick="toggleReadOnly('jester_checkbox', 'jester_quant')">
+        </label>
+        <label for="jester_number">Quantity:</label>
+        <input type="number" name="jester" id="jester_quant" readonly>
+        <br><br>
+
+        <label>
+        Serial Killer<input type="checkbox" id="serial_killer_checkbox" onclick="toggleReadOnly('serial_killer_checkbox', 'serial_killer_quant')">
+        </label>
+        <label for="serial_killer_number">Quantity:</label>
+        <input type="number" name="serial_killer" id="serial_killer_quant" readonly>
+
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

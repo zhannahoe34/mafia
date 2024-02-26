@@ -66,6 +66,5 @@ def hello_world(request):
         context = {
             'roles': role_dict
         }
-        print(request.POST)
 
         return render(request, 'roles.html', context)
